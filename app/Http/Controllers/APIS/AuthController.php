@@ -23,8 +23,8 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
-        $token = $user->createToken('auth_token')->plainTextToken;
-
+        $token = $user->createToken(uniqid(), ['user:endusers'])->plainTextToken;
+        
         return APIResponse::success('Login successful', [
             'user' => $user,
             'token' => $token,
