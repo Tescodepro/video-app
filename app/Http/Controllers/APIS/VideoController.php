@@ -27,14 +27,14 @@ class VideoController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
-            'video_path' => 'nullable|url',
+            'video_path' => 'required|url',
             'visibility' => 'nullable|in:public,private',
-            'thumbnail' => 'nullable|url',
+            'thumbnail' => 'required|url',
             'tags' => 'nullable|string',
-            'duration' => 'nullable|string',
-            'resolution' => 'nullable|string',
+            'duration' => 'required|string',
+            'resolution' => 'required|string',
         ]);
 
         $video = Video::create([
